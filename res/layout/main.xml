@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<ScrollView
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	>
-<TextView  
-	android:id="@+id/text"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    android:textSize="20dip"
-    />
-</ScrollView>
-</LinearLayout>
+    android:layout_height="fill_parent">
+    <Button 
+    		android:id="@+id/button1" 
+    		android:text="Add Event"
+    		android:layout_height="wrap_content" 
+    		android:layout_width="163dip">
+    </Button>
+    
+    <Button 
+    		android:layout_alignParentRight="true"
+    		android:layout_width="163dip" 
+    		android:text="Add Assignment" 
+    		android:id="@+id/button2" 
+    		android:layout_height="wrap_content">
+    </Button>
+    
+    <GridView 
+    		android:id="@+id/mygridview" 
+    		android:layout_below="@+id/button1" 
+    		android:layout_height="fill_parent" 
+    		android:layout_width="fill_parent">
+    </GridView>
+    
+</RelativeLayout>
