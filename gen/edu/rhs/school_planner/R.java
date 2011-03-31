@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
+		public static int irish;
     }
     public static final class id {
         public static final int text=0x7f050000;
