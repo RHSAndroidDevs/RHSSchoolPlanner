@@ -8,34 +8,46 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class main extends Activity {
-    private TextView text;
-    private String tdText="";
+    private ImageView banner;
+    private Display display;
+    private int screenW, imageW;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        text = (TextView) findViewById(R.id.text);
+        banner = (ImageView) findViewById(R.id.banner);
+        display = getWindowManager().getDefaultDisplay();
+        screenW = display.getWidth();
         
-        try {
-        	Log.d("test","in try");
-			Document doc = Jsoup.connect("http://www.southsuburbanconference.org/g5-bin/client.cgi?G5genie=184&school_id=10").get();
-			Log.d("internet", "got connection");
-			Elements tds = doc.select("td.bcopyfooter");
-			Log.d("Element","selected text");
-			for (int x = 5; x<tds.size(); x++) {
-				tdText = tdText+ "\n" + tds.get(x).text();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			Toast.makeText(this, "Cannot contact website... please check internet connection", Toast.LENGTH_LONG).show();
-		}
-		text.setText(tdText);
+        Bitmap bitmapOrg = BitmapFactory.decodeResource(getResources(), R.drawable.bannertop3a);
+        imageW = bitmapOrg.getWidth();
+        
+        float scaleWidth = ((float)screenW)/imageW;
+        
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, 1);
+        
+        Bitmap resizedBitMap = Bitmap.createBitmap(bitmapOrg, 0, 0, imageW, bitmapOrg.getHeight(), matrix, true);
+        
+        BitmapDrawable bmd = new BitmapDrawable(resizedBitMap);
+        
+        banner.setImageDrawable(bmd);
+        
+        
+        
+        
     }
     
 }
