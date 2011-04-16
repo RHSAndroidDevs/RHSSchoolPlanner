@@ -1,12 +1,6 @@
 package edu.rhs.school_planner;
 
 import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,7 +22,15 @@ public class main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         banner = (ImageView) findViewById(R.id.banner);
-        display = getWindowManager().getDefaultDisplay();
+        setBannerSize();
+        
+        
+        
+        
+        
+    }
+    public void setBannerSize(){
+    	display = getWindowManager().getDefaultDisplay();
         screenW = display.getWidth();
         
         Bitmap bitmapOrg = BitmapFactory.decodeResource(getResources(), R.drawable.bannertop3a);
@@ -44,10 +46,5 @@ public class main extends Activity {
         BitmapDrawable bmd = new BitmapDrawable(resizedBitMap);
         
         banner.setImageDrawable(bmd);
-        
-        
-        
-        
     }
-    
 }
