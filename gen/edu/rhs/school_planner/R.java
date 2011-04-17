@@ -11,6 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int black=0x7f040001;
         public static final int white=0x7f040000;
     }
     public static final class drawable {
@@ -21,11 +22,12 @@ public final class R {
     public static final class id {
         public static final int Badd_assignment=0x7f060002;
         public static final int Badd_event=0x7f060001;
+        public static final int GVcalendar=0x7f060003;
         public static final int banner=0x7f060000;
-        public static final int mygridview=0x7f060003;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
+        public static final int dates=0x7f030000;
+        public static final int main=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

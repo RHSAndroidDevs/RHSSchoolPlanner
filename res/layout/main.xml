@@ -27,12 +27,13 @@
     </Button>
     
     <GridView 
-    		android:id="@+id/mygridview" 
+    		android:id="@+id/GVcalendar" 
     		android:background="@drawable/irish"
     		android:layout_below="@id/banner"
     		android:layout_above="@id/Badd_event" 
     		android:layout_height="fill_parent" 
-    		android:layout_width="fill_parent">
+    		android:layout_width="fill_parent"
+    		>
     </GridView>
     
 </RelativeLayout>
