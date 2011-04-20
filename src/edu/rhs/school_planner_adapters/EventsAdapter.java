@@ -2,7 +2,7 @@ package edu.rhs.school_planner_adapters;
 
 import java.util.ArrayList;
 import edu.rhs.school_planner.R;
-import objects.Event;
+import edu.rhs.school_planner_objects.Event;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;

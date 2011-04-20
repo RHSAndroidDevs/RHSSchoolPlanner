@@ -1,4 +1,4 @@
-package objects;
+package edu.rhs.school_planner_objects;
 
 public class Event {
 	private String title;

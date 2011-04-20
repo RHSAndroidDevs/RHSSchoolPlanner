@@ -15,8 +15,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import edu.rhs.school_planner_adapters.EventsAdapter;
+import edu.rhs.school_planner_objects.Event;
 
-import objects.Event;
 
 import android.app.Activity;
 import android.os.Bundle;
