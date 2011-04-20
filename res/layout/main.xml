@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -9,9 +9,13 @@
     		android:layout_width="wrap_content"
     		android:layout_alignParentTop="true"
     		android:id="@+id/banner"/>
+    <RelativeLayout
+    		android:layout_height="wrap_content"
+    		android:layout_width="fill_parent"
+    		android:background="@drawable/irish">
     <Button 
-    		android:id="@+id/Badd_event" 
-    		android:text="Add Event"
+    		android:id="@+id/Bview_events" 
+    		android:text="What's Doin?"
     		android:layout_height="wrap_content" 
     		android:layout_width="163dip"
     		android:layout_alignParentBottom="true">
@@ -26,14 +30,6 @@
     		android:layout_height="wrap_content">
     </Button>
     
-    <GridView 
-    		android:id="@+id/GVcalendar" 
-    		android:background="@drawable/irish"
-    		android:layout_below="@id/banner"
-    		android:layout_above="@id/Badd_event" 
-    		android:layout_height="fill_parent" 
-    		android:layout_width="fill_parent"
-    		>
-    </GridView>
-    
-</RelativeLayout>
+    </RelativeLayout>
+        
+</LinearLayout>
