@@ -18,15 +18,23 @@
     		android:text="What's Doin?"
     		android:layout_height="wrap_content" 
     		android:layout_width="163dip"
-    		android:layout_alignParentBottom="true">
+    		android:layout_below="@id/banner">
     </Button>
     
     <Button 
     		android:layout_alignParentRight="true"
-    		android:layout_alignParentBottom="true"
+    		android:layout_below="@id/banner"
     		android:layout_width="163dip" 
     		android:text="Add Assignment" 
     		android:id="@+id/Badd_assignment" 
+    		android:layout_height="wrap_content">
+    </Button>
+    <Button 
+    		android:layout_alignParentLeft="true"
+    		android:layout_below="@id/Bview_events"
+    		android:layout_width="163dip" 
+    		android:text="Irish Update" 
+    		android:id="@+id/Birish_update" 
     		android:layout_height="wrap_content">
     </Button>
     

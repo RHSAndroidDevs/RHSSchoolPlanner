@@ -23,6 +23,7 @@ public final class R {
     }
     public static final class id {
         public static final int Badd_assignment=0x7f060007;
+        public static final int Birish_update=0x7f060008;
         public static final int Bview_events=0x7f060006;
         public static final int LVepisodes=0x7f060003;
         public static final int LVevents=0x7f060002;

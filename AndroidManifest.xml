@@ -13,6 +13,8 @@
         </activity>
 
     <activity android:name="Events"></activity>
+<activity android:name="IrishUpdate"></activity>
+<activity android:name="WatchIU"></activity>
 </application>
     <uses-sdk android:minSdkVersion="4" />
 

@@ -22,7 +22,7 @@ public class main extends Activity {
     private Display display;
     private int screenW, imageW;
     private String[] mock = new String[31];
-    private Button Bevents;
+    private Button Bevents, BirishUpdate;
 	private OnClickListener OCL;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class main extends Activity {
         banner = (ImageView) findViewById(R.id.banner);
         Bevents = (Button) findViewById (R.id.Bview_events);
         Bevents.setOnClickListener(OCL);
+        BirishUpdate = (Button) findViewById(R.id.Birish_update);
+        BirishUpdate.setOnClickListener(OCL);
         setBannerSize();
         
         
@@ -45,6 +47,10 @@ public class main extends Activity {
 				if(v == Bevents)
 				{
 					startActivity(new Intent(main.this, Events.class));
+				}
+				if(v == BirishUpdate)
+				{
+					startActivity(new Intent(main.this, IrishUpdate.class));
 				}
 				
 			}

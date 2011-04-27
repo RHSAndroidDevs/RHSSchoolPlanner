@@ -30,7 +30,10 @@ public class Events extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.events);
+		if (ALevents.size()==0)
+		{
 		getEvents();
+		}
 		
 		LVevents = (ListView) findViewById(R.id.LVevents);
 		LVevents.setAdapter(new EventsAdapter(ALevents, this));
