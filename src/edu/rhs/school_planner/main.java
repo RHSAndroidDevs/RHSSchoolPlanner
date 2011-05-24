@@ -1,5 +1,6 @@
 package edu.rhs.school_planner;
 
+import edu.rhs.school_planner_adapters.ImageAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Gallery;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ public class main extends Activity {
     private String[] mock = new String[31];
     private Button Bevents, BirishUpdate;
 	private OnClickListener OCL;
+	private Gallery gallery;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,8 @@ public class main extends Activity {
         Bevents.setOnClickListener(OCL);
         BirishUpdate = (Button) findViewById(R.id.Birish_update);
         BirishUpdate.setOnClickListener(OCL);
-        setBannerSize();
+        gallery = (Gallery)findViewById(R.id.gallery);
+        gallery.setAdapter(new ImageAdapter(this));
         
         
         
@@ -58,23 +62,5 @@ public class main extends Activity {
 		};
 		
 	}
-	public void setBannerSize(){
-    	display = getWindowManager().getDefaultDisplay();
-        screenW = display.getWidth();
-        
-        Bitmap bitmapOrg = BitmapFactory.decodeResource(getResources(), R.drawable.bannertop3a);
-        imageW = bitmapOrg.getWidth();
-        
-        float scaleWidth = ((float)screenW)/imageW;
-        
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, 1);
-        
-        Bitmap resizedBitMap = Bitmap.createBitmap(bitmapOrg, 0, 0, imageW, bitmapOrg.getHeight(), matrix, true);
-        
-        BitmapDrawable bmd = new BitmapDrawable(resizedBitMap);
-        
-        banner.setImageDrawable(bmd);
-    }
 
 }
