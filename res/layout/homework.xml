@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/rhs_blue">
+  
+  <Button
+  android:id="@+id/Byesterday"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignParentTop="true"
+  android:layout_alignParentLeft="true"
+  android:text="Yesterday"
+  android:textSize="15dip" />
+  <Button
+  android:id="@+id/Btomorrow"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignParentTop="true"
+  android:layout_alignParentRight="true"
+  android:text="Tomorrow"
+  android:textSize="15dip"
+  />
+  <Button
+  android:id="@+id/Bdate"
+  android:layout_toLeftOf="@id/Btomorrow"
+  android:layout_toRightOf="@id/Byesterday"
+  android:layout_height="wrap_content"
+  android:layout_width="wrap_content"
+  android:textSize="20dip"
+  android:text="date"
+  />
+  <TextView
+  android:id="@+id/TVhomeworklabel"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:layout_below="@id/Bdate"
+  android:text="To Do:"
+  android:textSize="30dip"
+  />
+  <ListView
+  android:id="@+id/LVhomework"
+  android:layout_width="fill_parent"
+  android:layout_below="@id/TVhomeworklabel"
+  android:layout_height="wrap_content"
+  android:layout_alignParentBottom="true"
+  android:background="@color/clear"
+  android:cacheColorHint="@color/clear"
+  />
+</RelativeLayout>

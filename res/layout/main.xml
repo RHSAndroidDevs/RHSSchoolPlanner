@@ -14,7 +14,7 @@
     <RelativeLayout
     		android:layout_height="wrap_content"
     		android:layout_width="fill_parent"
-    		android:background="#000055">
+    		android:background="@color/rhs_blue">
     <Button 
     		android:id="@+id/Bview_events" 
     		android:text="What's Doin?"
@@ -27,13 +27,13 @@
     		android:layout_alignParentRight="true"
     		android:layout_below="@id/Bview_events"
     		android:layout_width="fill_parent" 
-    		android:text="Add Assignment" 
-    		android:id="@+id/Badd_assignment" 
+    		android:text="Homework" 
+    		android:id="@+id/Bhomework" 
     		android:layout_height="wrap_content">
     </Button>
     <Button 
     		android:layout_alignParentLeft="true"
-    		android:layout_below="@id/Badd_assignment"
+    		android:layout_below="@id/Bhomework"
     		android:layout_width="fill_parent" 
     		android:text="Irish Update" 
     		android:id="@+id/Birish_update" 

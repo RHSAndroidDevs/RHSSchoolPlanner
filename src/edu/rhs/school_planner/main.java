@@ -24,7 +24,7 @@ public class main extends Activity {
     private Display display;
     private int screenW, imageW;
     private String[] mock = new String[31];
-    private Button Bevents, BirishUpdate;
+    private Button Bevents, BirishUpdate, Bhomework;
 	private OnClickListener OCL;
 	private Gallery gallery;
     @Override
@@ -37,6 +37,8 @@ public class main extends Activity {
         Bevents.setOnClickListener(OCL);
         BirishUpdate = (Button) findViewById(R.id.Birish_update);
         BirishUpdate.setOnClickListener(OCL);
+        Bhomework = (Button) findViewById(R.id.Bhomework);
+        Bhomework.setOnClickListener(OCL);
         gallery = (Gallery)findViewById(R.id.gallery);
         gallery.setAdapter(new ImageAdapter(this));
         
@@ -57,6 +59,10 @@ public class main extends Activity {
 					startActivity(new Intent(main.this, IrishUpdate.class));
 				}
 				
+				if(v == Bhomework)
+				{
+					startActivity(new Intent(main.this, Homework.class));
+				}
 			}
 			
 		};

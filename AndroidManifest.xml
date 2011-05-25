@@ -15,8 +15,11 @@
     <activity android:name="Events"></activity>
 <activity android:name="IrishUpdate"></activity>
 <activity android:name="WatchIU"></activity>
+<activity android:name="Homework"></activity>
 </application>
     <uses-sdk android:minSdkVersion="4" />
 
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+<uses-permission android:name="android.permission.READ_CALENDAR"></uses-permission>
 </manifest> 

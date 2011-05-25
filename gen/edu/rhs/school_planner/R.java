@@ -12,6 +12,8 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f040001;
+        public static final int clear=0x7f040003;
+        public static final int rhs_blue=0x7f040002;
         public static final int white=0x7f040000;
     }
     public static final class drawable {
@@ -61,24 +63,33 @@ public final class R {
         public static final int tennis0910=0x7f02002b;
     }
     public static final class id {
-        public static final int Badd_assignment=0x7f060007;
-        public static final int Birish_update=0x7f060008;
-        public static final int Bview_events=0x7f060006;
-        public static final int LVepisodes=0x7f060003;
-        public static final int LVevents=0x7f060002;
-        public static final int banner=0x7f060005;
-        public static final int events_bulk=0x7f060001;
-        public static final int events_header=0x7f060000;
-        public static final int gallery=0x7f060009;
-        public static final int video=0x7f060004;
+        public static final int Bdate=0x7f060007;
+        public static final int Bhomework=0x7f06000e;
+        public static final int Birish_update=0x7f06000f;
+        public static final int Btomorrow=0x7f060006;
+        public static final int Bview_events=0x7f06000d;
+        public static final int Byesterday=0x7f060005;
+        public static final int CTVtitle=0x7f060000;
+        public static final int LVepisodes=0x7f06000a;
+        public static final int LVevents=0x7f060004;
+        public static final int LVhomework=0x7f060009;
+        public static final int TVdatelabel=0x7f060001;
+        public static final int TVhomeworklabel=0x7f060008;
+        public static final int banner=0x7f06000c;
+        public static final int events_bulk=0x7f060003;
+        public static final int events_header=0x7f060002;
+        public static final int gallery=0x7f060010;
+        public static final int video=0x7f06000b;
     }
     public static final class layout {
-        public static final int dates=0x7f030000;
-        public static final int event_row=0x7f030001;
-        public static final int events=0x7f030002;
-        public static final int irish_update=0x7f030003;
-        public static final int ladd_event=0x7f030004;
-        public static final int main=0x7f030005;
+        public static final int assignment_row=0x7f030000;
+        public static final int dates=0x7f030001;
+        public static final int event_row=0x7f030002;
+        public static final int events=0x7f030003;
+        public static final int homework=0x7f030004;
+        public static final int irish_update=0x7f030005;
+        public static final int ladd_event=0x7f030006;
+        public static final int main=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
