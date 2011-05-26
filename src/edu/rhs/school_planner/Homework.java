@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 
 import edu.rhs.school_planner_adapters.HomeworkAdapter;
+import edu.rhs.school_planner_objects.HomeworkAssignment;
 
 import android.app.Activity;
 import android.content.ContentProvider;
@@ -26,14 +27,18 @@ public class Homework extends Activity {
 	private Button Byesterday, Btomorrow, Bdate;
 	private ListView LVhomework;
 	private Calendar calendar;
+	private HomeworkAdapter ha;
 	private ArrayList<String> homeworkTitle = new ArrayList<String>(), homeworkDate = new ArrayList<String>();
 	public void onCreate(Bundle onSavedInstanceState) {
 		super.onCreate(onSavedInstanceState);
 		setContentView(R.layout.homework);
 		LVhomework = (ListView) findViewById(R.id.LVhomework);
-		LVhomework.setAdapter(new HomeworkAdapter(this));
+		ha = new HomeworkAdapter(this);
+		LVhomework.setAdapter(ha);
 		calendar = new GregorianCalendar();
 		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND,0);
 		Bdate = (Button) findViewById(R.id.Bdate);
 		setDate(0);
 		Byesterday = (Button) findViewById(R.id.Byesterday);
@@ -41,7 +46,7 @@ public class Homework extends Activity {
 
 			public void onClick(View arg0) {
 				setDate(-1*DateUtils.DAY_IN_MILLIS);
-				getEvents();
+				
 				
 				
 			}
@@ -54,23 +59,21 @@ public class Homework extends Activity {
 
 			public void onClick(View v) {
 				setDate(DateUtils.DAY_IN_MILLIS);
-				getEvents();
+				
 				
 			}
 			
 		});
-		getEvents();
-		
 	}
 	private void setDate(long i) {
 		calendar.setTimeInMillis(calendar.getTimeInMillis()+i);
 		Bdate.setText((calendar.get(Calendar.MONTH)+1)+"/"+calendar.get(Calendar.DAY_OF_MONTH)+"/"+
 				calendar.get(Calendar.YEAR));
+		getEvents();
 		
 	}
 	public void getEvents(){
-		homeworkTitle.clear();
-		homeworkDate.clear();
+		ha.getHomework().clear();
 		ContentResolver cr = getContentResolver();
 		Cursor cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), new String[]{ "_id", "displayName", "selected"  }, null, null, null);         
 	   
@@ -94,8 +97,7 @@ public class Homework extends Activity {
 			Cursor eventCursor = cr.query(builder.build(),
 					new String[] { "title", "begin", "end", "allDay"}, "Calendars._id=" + id,
 					null, "startDay ASC, startMinute ASC"); 
-			// For a full list of available columns see http://tinyurl.com/yfbg76w
-
+			
 			while (eventCursor.moveToNext()) {
 				final String title = eventCursor.getString(0);
 				final Date begin = new Date(eventCursor.getLong(1));
@@ -104,13 +106,13 @@ public class Homework extends Activity {
 				
 				Log.v("test","Title: " + title + " Begin: " + begin + " End: " + end +
 						" All Day: " + allDay);
-				homeworkTitle.add(title);
-				homeworkDate.add(begin.toString());
+				ha.addAssignment(new HomeworkAssignment(title,begin.toString()));
 				
 				
 			}
+			ha.notifyDataSetChanged();
 		}
-		((HomeworkAdapter) LVhomework.getAdapter()).setHomework(homeworkTitle, homeworkDate);
+		
 	}
 
 }

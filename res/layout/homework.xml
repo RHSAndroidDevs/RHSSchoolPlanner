@@ -43,7 +43,7 @@
   android:id="@+id/LVhomework"
   android:layout_width="fill_parent"
   android:layout_below="@id/TVhomeworklabel"
-  android:layout_height="wrap_content"
+  android:layout_height="fill_parent"
   android:layout_alignParentBottom="true"
   android:background="@color/clear"
   android:cacheColorHint="@color/clear"
