@@ -10,6 +10,8 @@ import edu.rhs.school_planner_adapters.HomeworkAdapter;
 import edu.rhs.school_planner_objects.HomeworkAssignment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -21,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 
 public class Homework extends Activity {
@@ -28,6 +31,7 @@ public class Homework extends Activity {
 	private ListView LVhomework;
 	private Calendar calendar;
 	private HomeworkAdapter ha;
+	private final int DATE_PICKER_ID=0;
 	private ArrayList<String> homeworkTitle = new ArrayList<String>(), homeworkDate = new ArrayList<String>();
 	public void onCreate(Bundle onSavedInstanceState) {
 		super.onCreate(onSavedInstanceState);
@@ -40,6 +44,14 @@ public class Homework extends Activity {
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND,0);
 		Bdate = (Button) findViewById(R.id.Bdate);
+		Bdate.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				showDialog(DATE_PICKER_ID);
+				
+			}
+			
+		});
 		setDate(0);
 		Byesterday = (Button) findViewById(R.id.Byesterday);
 		Byesterday.setOnClickListener(new OnClickListener(){
@@ -65,6 +77,39 @@ public class Homework extends Activity {
 			
 		});
 	}
+	/*
+	 * Creates a listener for the date picker. After a date has been selected we change
+	 * our calendar to match and call set date to change text and events viewed
+	 */
+	 private DatePickerDialog.OnDateSetListener mDateSetListener =
+         new DatePickerDialog.OnDateSetListener() {
+
+			public void onDateSet(DatePicker view, int year, int month, int day) {
+				calendar.set(Calendar.YEAR, year);
+				calendar.set(Calendar.DAY_OF_MONTH,day);
+				calendar.set(Calendar.MONTH,month);
+				setDate(0);
+				
+			}
+         };
+         /*
+          * creates dialogs based on their id
+          * 
+          */
+    protected Dialog onCreateDialog(int id) {
+    	switch (id){
+    	case DATE_PICKER_ID:
+    		return new DatePickerDialog(this, mDateSetListener, calendar.get(Calendar.YEAR),
+    				calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+    	default:
+    		return null;
+    	}
+    	
+    }
+    /*
+     * used to change the text of the date button and set the date to select calendar
+     * events from
+     */
 	private void setDate(long i) {
 		calendar.setTimeInMillis(calendar.getTimeInMillis()+i);
 		Bdate.setText((calendar.get(Calendar.MONTH)+1)+"/"+calendar.get(Calendar.DAY_OF_MONTH)+"/"+
@@ -72,8 +117,13 @@ public class Homework extends Activity {
 		getEvents();
 		
 	}
+	/*
+	 * Queries the calendar database to find all available databases on the phone and then gets all
+	 * the events for the date selected to put into list form
+	 */
 	public void getEvents(){
 		ha.getHomework().clear();
+		//content resolver is how we access android databases like text messages and the calendar
 		ContentResolver cr = getContentResolver();
 		Cursor cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), new String[]{ "_id", "displayName", "selected"  }, null, null, null);         
 	   
