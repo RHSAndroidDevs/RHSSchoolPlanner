@@ -4,9 +4,9 @@ public class HomeworkAssignment {
 	private String title;
 	private String date;
 	
-	public HomeworkAssignment(String t){
-		setTitle(t);
-		setDate("");
+    public HomeworkAssignment (String t){
+    	setTitle(t);
+    	setDate("");
 	}
 	public HomeworkAssignment(String t, String d) {
 		setTitle(t);

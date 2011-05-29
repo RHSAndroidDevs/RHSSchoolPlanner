@@ -16,6 +16,7 @@
 <activity android:name="IrishUpdate"></activity>
 <activity android:name="WatchIU"></activity>
 <activity android:name="Homework"></activity>
+<activity android:name="AddAssignment"></activity>
 </application>
     <uses-sdk android:minSdkVersion="4" />
 

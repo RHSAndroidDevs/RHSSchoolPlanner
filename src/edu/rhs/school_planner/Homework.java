@@ -1,20 +1,17 @@
 package edu.rhs.school_planner;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
-
 import edu.rhs.school_planner_adapters.HomeworkAdapter;
 import edu.rhs.school_planner_objects.HomeworkAssignment;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,12 +24,11 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 
 public class Homework extends Activity {
-	private Button Byesterday, Btomorrow, Bdate;
+	private Button Byesterday, Btomorrow, Bdate,BnewEvent;
 	private ListView LVhomework;
 	private Calendar calendar;
 	private HomeworkAdapter ha;
 	private final int DATE_PICKER_ID=0;
-	private ArrayList<String> homeworkTitle = new ArrayList<String>(), homeworkDate = new ArrayList<String>();
 	public void onCreate(Bundle onSavedInstanceState) {
 		super.onCreate(onSavedInstanceState);
 		setContentView(R.layout.homework);
@@ -72,6 +68,15 @@ public class Homework extends Activity {
 			public void onClick(View v) {
 				setDate(DateUtils.DAY_IN_MILLIS);
 				
+				
+			}
+			
+		});
+		BnewEvent = (Button) findViewById(R.id.Bnew_event);
+		BnewEvent.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				startActivity(new Intent(Homework.this, AddAssignment.class));
 				
 			}
 			
@@ -142,7 +147,7 @@ public class Homework extends Activity {
 		for (String id: calendarIds){
 			Uri.Builder builder = Uri.parse("content://com.android.calendar/instances/when").buildUpon();
 			ContentUris.appendId(builder, calendar.getTimeInMillis());
-			ContentUris.appendId(builder, calendar.getTimeInMillis() + DateUtils.DAY_IN_MILLIS);
+			ContentUris.appendId(builder, calendar.getTimeInMillis() + DateUtils.DAY_IN_MILLIS-60000);
 
 			Cursor eventCursor = cr.query(builder.build(),
 					new String[] { "title", "begin", "end", "allDay"}, "Calendars._id=" + id,

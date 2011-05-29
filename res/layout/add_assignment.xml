@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/rhs_blue"
+  >
+  	<EditText
+  		android:id="@+id/ETname"
+	  	android:hint="Assignment Name"
+  		android:textSize="20dip"
+ 		android:layout_height="wrap_content"
+  		android:layout_width="fill_parent"
+  		android:layout_alignParentTop="true"
+  		android:layout_alignParentLeft="true"
+ 	 />
+ 	 <View
+ 	 	android:id="@+id/Vblank"
+ 		android:layout_width="fill_parent"
+  		android:layout_height="10dip"
+  		android:layout_below="@id/ETname"
+  		android:background="@color/clear"
+  	/>
+  	<ScrollView
+  		android:layout_below="@id/Vblank"
+  		android:layout_height="wrap_content"
+  		android:layout_width="fill_parent"
+  		android:id="@+id/SV">
+  		<EditText
+  			android:id="@+id/ETdescription"
+  			android:hint="Assignment Description"
+  			android:layout_height="wrap_content"
+  			android:layout_width="fill_parent"
+  			android:maxLines="3"
+  		/>
+  	</ScrollView>
+  	<TextView
+  		android:id="@+id/TVstartLabel"
+  		android:text="Start Date:"
+  		android:textSize="20dip"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_below="@id/SV"
+  	/>
+ 
+  	<Button
+  		android:id="@+id/BstartDate"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_toRightOf="@id/TVstartLabel"
+  		android:layout_below="@id/SV"
+  	/>
+  	<Button
+  		android:id="@+id/BstartTime"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_toRightOf="@id/BstartDate"
+  		android:layout_below="@id/SV"
+  	/>
+  	<View
+ 	 	android:id="@+id/Vblank2"
+ 		android:layout_width="fill_parent"
+  		android:layout_height="10dip"
+  		android:layout_below="@id/BstartTime"
+  		android:background="@color/clear"
+  	/>
+  	<TextView
+  		android:id="@+id/TVendLabel"
+  		android:text="End Date: "
+  		android:textSize="20dip"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_below="@id/Vblank2"
+  		android:layout_alignParentLeft="true"
+  	/>
+  	<Button
+  		android:id="@+id/BendDate"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_toRightOf="@id/TVendLabel"
+  		android:layout_below="@id/Vblank2"
+  	/>
+ 
+  	<Button
+  		android:id="@+id/BendTime"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_toRightOf="@id/BendDate"
+  		android:layout_below="@id/Vblank2"
+  	/>
+  	<CheckBox
+  		android:id="@+id/CBallDay"
+  		android:text="all day?"
+  		android:textSize="20dip"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_below="@id/BendTime"
+  		android:layout_alignParentLeft="true"
+  	/>
+  	<Button
+  		android:id="@+id/Badd_assignment_to_calendar"
+  		android:text="Finish"
+  		android:textSize="20dip"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:layout_alignParentBottom="true"
+  	/>
+  	
+  	
+  
+  </RelativeLayout>

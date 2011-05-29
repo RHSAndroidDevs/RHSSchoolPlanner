@@ -48,4 +48,13 @@
   android:background="@color/clear"
   android:cacheColorHint="@color/clear"
   />
+  <Button
+  android:layout_height="wrap_content"
+  android:layout_width="wrap_content"
+  android:layout_alignParentBottom="true"
+  android:layout_alignParentLeft="true"
+  android:text="New Event"
+  android:textSize="15dip"
+  android:id="@+id/Bnew_event"
+  />
 </RelativeLayout>
