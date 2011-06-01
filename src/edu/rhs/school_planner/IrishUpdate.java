@@ -47,6 +47,7 @@ public class IrishUpdate extends Activity {
 			org.jsoup.select.Elements elements = doc.select("a[href]");
 			System.out.println(elements);
 			for (org.jsoup.nodes.Element e: elements) {
+				if(e.attr("href").charAt(0)=='i')
 				ALepisodes.add(e.attr("href"));
 				Log.v("test",ALepisodes.get(ALepisodes.size()-1));
 			}

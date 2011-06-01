@@ -72,15 +72,25 @@ public class Homework extends Activity {
 			}
 			
 		});
-		BnewEvent = (Button) findViewById(R.id.Bnew_event);
+		BnewEvent = (Button) findViewById(R.id.Bnew_Assignment);
 		BnewEvent.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				startActivity(new Intent(Homework.this, AddAssignment.class));
+				Calendar cal = Calendar.getInstance();              
+				Intent intent = new Intent(Intent.ACTION_EDIT);
+				intent.setType("vnd.android.cursor.item/event");
+				intent.putExtra("beginTime", cal.getTimeInMillis());
+				intent.putExtra("allDay", false);
+				intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+				startActivity(intent);
 				
 			}
 			
 		});
+	}
+	public void onResume(){
+		super.onResume();
+		getEvents();
 	}
 	/*
 	 * Creates a listener for the date picker. After a date has been selected we change
@@ -147,8 +157,8 @@ public class Homework extends Activity {
 		for (String id: calendarIds){
 			Uri.Builder builder = Uri.parse("content://com.android.calendar/instances/when").buildUpon();
 			ContentUris.appendId(builder, calendar.getTimeInMillis());
-			ContentUris.appendId(builder, calendar.getTimeInMillis() + DateUtils.DAY_IN_MILLIS-60000);
-
+			Log.v("calendar",calendar.getTime().toString());
+			ContentUris.appendId(builder, calendar.getTimeInMillis() + (DateUtils.DAY_IN_MILLIS-21600000));
 			Cursor eventCursor = cr.query(builder.build(),
 					new String[] { "title", "begin", "end", "allDay"}, "Calendars._id=" + id,
 					null, "startDay ASC, startMinute ASC"); 
@@ -161,6 +171,8 @@ public class Homework extends Activity {
 				
 				Log.v("test","Title: " + title + " Begin: " + begin + " End: " + end +
 						" All Day: " + allDay);
+				if(allDay)
+					begin.setTime(begin.getTime()+DateUtils.DAY_IN_MILLIS);
 				ha.addAssignment(new HomeworkAssignment(title,begin.toString()));
 				
 				

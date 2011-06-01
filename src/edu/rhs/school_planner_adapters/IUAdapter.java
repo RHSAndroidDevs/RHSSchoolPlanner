@@ -40,10 +40,14 @@ public class IUAdapter extends BaseAdapter {
 		View row = convertView;
 		if(row == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			row = inflater.inflate(R.layout.event_row, parent, false);
+			row = inflater.inflate(R.layout.iu_row, parent, false);
 		}
-		TextView header = (TextView) row.findViewById(R.id.events_header);
-		header.setText(ALepisodes.get(position).toString());
+		TextView header = (TextView) row.findViewById(R.id.iu_header);
+		String label=ALepisodes.get(position).toString();
+		String year = label.substring(2, 6);
+		String month = label.substring(6, 8);
+		String day = label.substring(8, 10);
+		header.setText(month+"/"+day+"/"+year);
 		return row;
 	}
 

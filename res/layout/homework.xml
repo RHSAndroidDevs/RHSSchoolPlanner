@@ -53,8 +53,8 @@
   android:layout_width="wrap_content"
   android:layout_alignParentBottom="true"
   android:layout_alignParentLeft="true"
-  android:text="New Event"
+  android:text="New Assignment"
   android:textSize="15dip"
-  android:id="@+id/Bnew_event"
+  android:id="@+id/Bnew_Assignment"
   />
 </RelativeLayout>
