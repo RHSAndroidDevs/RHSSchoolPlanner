@@ -39,22 +39,23 @@
   android:text="To Do:"
   android:textSize="30dip"
   />
-  <ListView
-  android:id="@+id/LVhomework"
-  android:layout_width="fill_parent"
-  android:layout_below="@id/TVhomeworklabel"
-  android:layout_height="fill_parent"
-  android:layout_alignParentBottom="true"
-  android:background="@color/clear"
-  android:cacheColorHint="@color/clear"
-  />
   <Button
   android:layout_height="wrap_content"
-  android:layout_width="wrap_content"
   android:layout_alignParentBottom="true"
   android:layout_alignParentLeft="true"
   android:text="New Assignment"
   android:textSize="15dip"
   android:id="@+id/Bnew_Assignment"
+  android:layout_width="150dip"/>
+  <ListView
+  android:id="@+id/LVhomework"
+  android:layout_width="fill_parent"
+  android:layout_below="@id/TVhomeworklabel"
+  android:layout_height="fill_parent"
+  android:layout_above="@id/Bnew_Assignment"
+  android:background="@color/clear"
+  android:cacheColorHint="@color/clear"
   />
+  <Button android:layout_below="@+id/LVhomework" android:id="@+id/Bsettings" android:layout_height="wrap_content" android:layout_alignRight="@+id/LVhomework" android:text="@string/settings" android:layout_width="150dip"></Button>
+
 </RelativeLayout>

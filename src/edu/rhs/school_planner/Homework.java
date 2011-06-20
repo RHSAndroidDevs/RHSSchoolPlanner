@@ -24,7 +24,7 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 
 public class Homework extends Activity {
-	private Button Byesterday, Btomorrow, Bdate,BnewEvent;
+	private Button Byesterday, Btomorrow, Bdate,BnewEvent, Bsettings;
 	private ListView LVhomework;
 	private Calendar calendar;
 	private HomeworkAdapter ha;
@@ -83,6 +83,16 @@ public class Homework extends Activity {
 				intent.putExtra("allDay", false);
 				intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
 				startActivity(intent);
+				
+			}
+			
+		});
+		Bsettings = (Button) findViewById(R.id.Bsettings);
+		Bsettings.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
 				
 			}
 			
@@ -160,7 +170,7 @@ public class Homework extends Activity {
 			Log.v("calendar",calendar.getTime().toString());
 			ContentUris.appendId(builder, calendar.getTimeInMillis() + (DateUtils.DAY_IN_MILLIS-21600000));
 			Cursor eventCursor = cr.query(builder.build(),
-					new String[] { "title", "begin", "end", "allDay"}, "Calendars._id=" + id,
+					new String[] { "title", "begin", "end", "allDay", "description"}, "Calendars._id=" + id,
 					null, "startDay ASC, startMinute ASC"); 
 			
 			while (eventCursor.moveToNext()) {
@@ -168,9 +178,10 @@ public class Homework extends Activity {
 				final Date begin = new Date(eventCursor.getLong(1));
 				final Date end = new Date(eventCursor.getLong(2));
 				final Boolean allDay = !eventCursor.getString(3).equals("0");
+				final String description = eventCursor.getString(4);
 				
 				Log.v("test","Title: " + title + " Begin: " + begin + " End: " + end +
-						" All Day: " + allDay);
+						" All Day: " + allDay + "Description"+description);
 				if(allDay)
 					begin.setTime(begin.getTime()+DateUtils.DAY_IN_MILLIS);
 				ha.addAssignment(new HomeworkAssignment(title,begin.toString()));
