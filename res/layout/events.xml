@@ -3,12 +3,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:background="@drawable/rosemount_logo_bigger_small">
+  android:background="@color/black">
   <ListView
   android:layout_height="fill_parent"
   android:layout_width="fill_parent"
   android:id="@+id/LVevents"
   android:background="#00000000"
   android:cacheColorHint="#00000000"
+  android:divider="@color/white"
   />
 </LinearLayout>
