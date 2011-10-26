@@ -63,25 +63,25 @@ public final class R {
         public static final int tennis0910=0x7f02002b;
     }
     public static final class id {
-        public static final int Bdate=0x7f060007;
-        public static final int Bhomework=0x7f060010;
-        public static final int Birish_update=0x7f060011;
-        public static final int Bnew_Assignment=0x7f06000a;
-        public static final int Btomorrow=0x7f060006;
-        public static final int Bview_events=0x7f06000f;
-        public static final int Byesterday=0x7f060005;
+        public static final int Bdate=0x7f060006;
+        public static final int Bhomework=0x7f06000f;
+        public static final int Birish_update=0x7f060010;
+        public static final int Bnew_Assignment=0x7f060009;
+        public static final int Btomorrow=0x7f060005;
+        public static final int Bview_events=0x7f06000e;
+        public static final int Byesterday=0x7f060004;
         public static final int CTVtitle=0x7f060000;
-        public static final int LVepisodes=0x7f06000b;
-        public static final int LVevents=0x7f060004;
-        public static final int LVhomework=0x7f060009;
+        public static final int LVepisodes=0x7f06000a;
+        public static final int LVevents=0x7f060003;
+        public static final int LVhomework=0x7f060008;
         public static final int TVdatelabel=0x7f060001;
-        public static final int TVhomeworklabel=0x7f060008;
-        public static final int banner=0x7f06000e;
-        public static final int events_bulk=0x7f060003;
+        public static final int TVhomeworklabel=0x7f060007;
+        public static final int banner=0x7f06000d;
         public static final int events_header=0x7f060002;
-        public static final int gallery=0x7f060012;
-        public static final int iu_header=0x7f06000d;
-        public static final int video=0x7f06000c;
+        public static final int gallery=0x7f060011;
+        public static final int iu_header=0x7f06000c;
+        public static final int video=0x7f06000b;
+        public static final int webview=0x7f060012;
     }
     public static final class layout {
         public static final int assignment_row=0x7f030000;
@@ -92,6 +92,7 @@ public final class R {
         public static final int irish_update=0x7f030005;
         public static final int iu_row=0x7f030006;
         public static final int main=0x7f030007;
+        public static final int wath_iu=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

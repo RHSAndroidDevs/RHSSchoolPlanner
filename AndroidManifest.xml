@@ -18,7 +18,7 @@
 <activity android:name="Homework"></activity>
 <activity android:name="AddAssignment"></activity>
 </application>
-    <uses-sdk android:minSdkVersion="4" />
+    <uses-sdk android:minSdkVersion="7" />
 
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 

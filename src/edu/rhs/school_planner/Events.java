@@ -77,8 +77,7 @@ public class Events extends Activity{
                 NodeList titleList = itemElement.getElementsByTagName("title");
                 Element titleElement = (Element)titleList.item(0);
 
-                NodeList textTitleList = titleElement.getChildNodes();
-                e.setTitle(((Node)textTitleList.item(0)).getNodeValue().trim());
+                
 
                 // gets the description of the event and sets it to the description
                 // in Event e
@@ -86,7 +85,7 @@ public class Events extends Activity{
                 Element descriptionElement = (Element)descriptionList.item(0);
 
                 NodeList textDescriptionList = descriptionElement.getChildNodes();
-                e.setDescription(((Node)textDescriptionList.item(0)).getNodeValue().trim());
+                e.setTitle(((Node)textDescriptionList.item(0)).getNodeValue().trim());
 			}
 			// adds the event to the ArrayList of events
 			ALevents.add(e);

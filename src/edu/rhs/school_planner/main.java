@@ -3,27 +3,13 @@ package edu.rhs.school_planner;
 import edu.rhs.school_planner_adapters.ImageAdapter;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Gallery;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class main extends Activity {
-    private ImageView banner;
-    private Display display;
-    private int screenW, imageW;
-    private String[] mock = new String[31];
     private Button Bevents, BirishUpdate, Bhomework;
 	private OnClickListener OCL;
 	private Gallery gallery;
@@ -32,7 +18,6 @@ public class main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         createOnClickListenter();
-        banner = (ImageView) findViewById(R.id.banner);
         Bevents = (Button) findViewById (R.id.Bview_events);
         Bevents.setOnClickListener(OCL);
         BirishUpdate = (Button) findViewById(R.id.Birish_update);

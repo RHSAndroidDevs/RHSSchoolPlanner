@@ -11,14 +11,6 @@
   	android:layout_height="wrap_content"
   	android:textSize="30dip"
   	android:textColor="@color/white"
-  	android:background="#00000000"
-  	/>
-  <TextView
-  	android:id="@+id/events_bulk"
-  	android:layout_height="wrap_content"
-  	android:layout_width="fill_parent"
-  	android:textSize="20dip"
-  	android:textColor="@color/white"
-  	android:background="#00000000"
+  	android:background="#44808080"
   	/>
 </LinearLayout>

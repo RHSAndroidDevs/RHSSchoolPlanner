@@ -44,8 +44,6 @@ public class EventsAdapter extends BaseAdapter {
 		}
 		TextView header = (TextView) row.findViewById(R.id.events_header);
 		header.setText(ALevents.get(position).getTitle());
-		TextView bulk = (TextView) row.findViewById(R.id.events_bulk);
-		bulk.setText(ALevents.get(position).getDescription());
 		return row;
 	}
 

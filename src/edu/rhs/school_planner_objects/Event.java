@@ -2,11 +2,9 @@ package edu.rhs.school_planner_objects;
 
 public class Event {
 	private String title;
-	private String description;
 	
 	public Event(String t, String d) {
 		setTitle(t);
-		setDescription(d);
 	}
 
 	public Event() {
@@ -18,14 +16,6 @@ public class Event {
 
 	public String getTitle() {
 		return title;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 	
 }
