@@ -81,7 +81,6 @@ public final class R {
         public static final int gallery=0x7f060011;
         public static final int iu_header=0x7f06000c;
         public static final int video=0x7f06000b;
-        public static final int webview=0x7f060012;
     }
     public static final class layout {
         public static final int assignment_row=0x7f030000;
@@ -92,7 +91,6 @@ public final class R {
         public static final int irish_update=0x7f030005;
         public static final int iu_row=0x7f030006;
         public static final int main=0x7f030007;
-        public static final int wath_iu=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
