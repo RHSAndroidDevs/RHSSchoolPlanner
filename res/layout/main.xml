@@ -1,53 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/white">
+    android:background="@color/rhs_blue"
+    android:orientation="vertical" >
+
     <ImageView
-    		android:layout_height="wrap_content"
-    		android:layout_width="wrap_content"
-    		android:layout_alignParentTop="true"
-    		android:id="@+id/banner"
-    		android:src="@drawable/bannertop3a"
-    		android:scaleType="fitXY"/>
+        android:id="@+id/banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/bannertop3a" />
+
+    <Button
+        android:id="@+id/Bview_events"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="What&apos;s Doin?" />
+
+    <Button
+        android:id="@+id/Bhomework"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Homework" />
+
+    <Button
+        android:id="@+id/Birish_update"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Irish Update" />
+
     <RelativeLayout
-    		android:layout_height="wrap_content"
-    		android:layout_width="fill_parent"
-    		android:background="@color/rhs_blue">
-    <Button 
-    		android:id="@+id/Bview_events" 
-    		android:text="What's Doin?"
-    		android:layout_height="wrap_content" 
-    		android:layout_width="fill_parent"
-    		android:layout_below="@id/banner">
-    </Button>
-    
-    <Button 
-    		android:layout_alignParentRight="true"
-    		android:layout_below="@id/Bview_events"
-    		android:layout_width="fill_parent" 
-    		android:text="Homework" 
-    		android:id="@+id/Bhomework" 
-    		android:layout_height="wrap_content">
-    </Button>
-    <Button 
-    		android:layout_alignParentLeft="true"
-    		android:layout_below="@id/Bhomework"
-    		android:layout_width="fill_parent" 
-    		android:text="Irish Update" 
-    		android:id="@+id/Birish_update" 
-    		android:layout_height="wrap_content">
-    </Button>
-    
-    <Gallery
-    	android:layout_alignParentBottom="true"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:id="@+id/gallery"
-    	android:spacing="5dip"
-    	/>
-    
+        android:id="@+id/imageAdapter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
     </RelativeLayout>
-        
+
 </LinearLayout>

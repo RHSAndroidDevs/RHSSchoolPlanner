@@ -1,9 +1,6 @@
 package edu.rhs.school_planner_adapters;
 
-import java.net.URL;
 import java.util.ArrayList;
-
-import edu.rhs.school_planner.R;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -11,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import edu.rhs.school_planner.R;
 
 public class IUAdapter extends BaseAdapter {
 	private ArrayList<String> ALepisodes;
@@ -21,21 +19,25 @@ public class IUAdapter extends BaseAdapter {
 		ALepisodes = episodes;
 		context = c;
 	}
+	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return ALepisodes.size();
 	}
 
+	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
 		return ALepisodes.get(position);
 	}
 
+	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
 		return position;
 	}
 
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		if(row == null) {

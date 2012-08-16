@@ -1,14 +1,13 @@
 package edu.rhs.school_planner_adapters;
 
-import android.R;
 import android.content.Context;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends PagerAdapter {
 
 	private Context mContext;
 	private Integer[] mImageIds = {
@@ -51,33 +50,35 @@ public class ImageAdapter extends BaseAdapter {
 			edu.rhs.school_planner.R.drawable.science08092,
 			edu.rhs.school_planner.R.drawable.tennis0910
 	};
+
 	public ImageAdapter (Context c){
 		mContext = c;
 	}
+
+	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return mImageIds.length;
 	}
 
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
-
-	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
-		return arg0;
-	}
-
-	public View getView(int position, View convertView, ViewGroup parent) {
+	@Override
+	public Object instantiateItem(ViewGroup container, int position) {
 		ImageView i = new ImageView(mContext);
+		i.setImageResource(mImageIds[position]);
+		i.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		i.setScaleType(ImageView.ScaleType.FIT_XY);
+		i.setId(container.getId() + position);
 
-        i.setImageResource(mImageIds[position]);
-        i.setLayoutParams(new Gallery.LayoutParams(250, 200));
-        i.setScaleType(ImageView.ScaleType.FIT_XY);
-        //i.setBackgroundResource(mGalleryItemBackground);
-
-        return i;
+		container.addView(i);
+		return i;
 	}
 
+	@Override
+	public void destroyItem(ViewGroup container, int position, Object object) {
+		// TODO: Don't do anything right now...
+	}
+
+	@Override
+	public boolean isViewFromObject(View view, Object object) {
+		return view == object;
+	}
 }

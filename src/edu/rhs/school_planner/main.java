@@ -1,57 +1,46 @@
 package edu.rhs.school_planner;
 
-import edu.rhs.school_planner_adapters.ImageAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Gallery;
+import android.widget.RelativeLayout;
+import edu.rhs.school_planner_adapters.ImageAdapter;
 
 public class main extends Activity {
-    private Button Bevents, BirishUpdate, Bhomework;
-	private OnClickListener OCL;
-	private Gallery gallery;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        createOnClickListenter();
-        Bevents = (Button) findViewById (R.id.Bview_events);
-        Bevents.setOnClickListener(OCL);
-        BirishUpdate = (Button) findViewById(R.id.Birish_update);
-        BirishUpdate.setOnClickListener(OCL);
-        Bhomework = (Button) findViewById(R.id.Bhomework);
-        Bhomework.setOnClickListener(OCL);
-        gallery = (Gallery)findViewById(R.id.gallery);
-        gallery.setAdapter(new ImageAdapter(this));
-        
-        
-        
-    }
-    private void createOnClickListenter() {
-		OCL = new OnClickListener(){
+	private Button mButtonEvents, mButtonIrishUpdate, mButtonHomework;
 
-			public void onClick(View v) {
-				
-				if(v == Bevents)
-				{
-					startActivity(new Intent(main.this, Events.class));
-				}
-				if(v == BirishUpdate)
-				{
-					startActivity(new Intent(main.this, IrishUpdate.class));
-				}
-				
-				if(v == Bhomework)
-				{
-					startActivity(new Intent(main.this, Homework.class));
-				}
+	private OnClickListener OCL = new OnClickListener(){
+		@Override
+		public void onClick(View v) {
+			if (v == mButtonEvents) {
+				startActivity(new Intent(main.this, Events.class));
+			} else if (v == mButtonIrishUpdate) {
+				startActivity(new Intent(main.this, IrishUpdate.class));
+			} else if (v == mButtonHomework) {
+				startActivity(new Intent(main.this, Homework.class));
 			}
-			
-		};
-		
-	}
+		}
+	};
 
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		mButtonEvents = (Button) findViewById (R.id.Bview_events);
+		mButtonEvents.setOnClickListener(OCL);
+		mButtonIrishUpdate = (Button) findViewById(R.id.Birish_update);
+		mButtonIrishUpdate.setOnClickListener(OCL);
+		mButtonHomework = (Button) findViewById(R.id.Bhomework);
+		mButtonHomework.setOnClickListener(OCL);
+
+		RelativeLayout imageLayout = (RelativeLayout) findViewById(R.id.imageAdapter);
+		ViewPager imageGallery = new ViewPager(this);
+		imageGallery.setAdapter(new ImageAdapter(this));
+		imageLayout.addView(imageGallery);
+	}
 }
