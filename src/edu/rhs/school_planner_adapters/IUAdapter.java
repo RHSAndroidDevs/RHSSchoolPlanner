@@ -1,6 +1,9 @@
 package edu.rhs.school_planner_adapters;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -11,45 +14,57 @@ import android.widget.TextView;
 import edu.rhs.school_planner.R;
 
 public class IUAdapter extends BaseAdapter {
-	private ArrayList<String> ALepisodes;
+	private ArrayList<String> mEpisodes;
 	private Activity context;
-	public IUAdapter(ArrayList<String> episodes, Activity c)
-	{
+
+	public IUAdapter(ArrayList<String> episodes, Activity c) {
 		super();
-		ALepisodes = episodes;
+		mEpisodes = episodes;
 		context = c;
 	}
+
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return ALepisodes.size();
+		return mEpisodes.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return ALepisodes.get(position);
+		return mEpisodes.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
-		if(row == null) {
+		if (row == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
 			row = inflater.inflate(R.layout.iu_row, parent, false);
 		}
+
 		TextView header = (TextView) row.findViewById(R.id.iu_header);
-		String label=ALepisodes.get(position).toString();
-		String year = label.substring(2, 6);
-		String month = label.substring(6, 8);
-		String day = label.substring(8, 10);
-		header.setText(month+"/"+day+"/"+year);
+		String label = mEpisodes.get(position).toString();
+		label = label.replace("iu", "");
+		label = label.replace("/index.cfm", "");
+
+		SimpleDateFormat format = new SimpleDateFormat("yyMMdd");
+		try {
+			Calendar c = Calendar.getInstance();
+			c.setTime(format.parse(label));
+
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int day = c.get(Calendar.DATE);
+
+			header.setText((month + 1) + "/" + day + "/" + year);
+		} catch (ParseException pe) {
+			System.out.println("ERROR: Cannot parse \"" + label + "\"");
+		}
+
 		return row;
 	}
 

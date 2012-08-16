@@ -3,11 +3,14 @@ package edu.rhs.school_planner;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,44 +19,63 @@ import android.widget.Toast;
 import edu.rhs.school_planner_adapters.IUAdapter;
 
 public class IrishUpdate extends Activity {
-	private ListView LVepisodes;
-	private ArrayList<String> ALepisodes;
+	private ListView mEpisodesListView;
+	private ArrayList<String> mEpisodes;
+
+	private Handler mHandler = new Handler();
+	private Runnable mRunnable;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		setContentView(R.layout.irish_update);
 		super.onCreate(savedInstanceState);
-		ALepisodes = new ArrayList<String>();
-		getAvailableEpisodes();
-		LVepisodes = (ListView) findViewById(R.id.LVepisodes);
-		LVepisodes.setAdapter(new IUAdapter(ALepisodes, this));
-		LVepisodes.setOnItemClickListener(new OnItemClickListener(){
-
+		mEpisodes = new ArrayList<String>();
+		mEpisodesListView = (ListView) findViewById(R.id.LVepisodes);
+		mEpisodesListView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long id) {
-				Intent i = new Intent (IrishUpdate.this, WatchIU.class);
-				i.putExtra("URL", ALepisodes.get(position).toString());
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+				Intent i = new Intent(IrishUpdate.this, WatchIU.class);
+				i.putExtra("URL", mEpisodes.get(position).toString());
 				startActivity(i);
 			}
-
 		});
 
+		mRunnable = new Runnable() {
+			@Override
+			public void run() {
+				mEpisodesListView.setAdapter(new IUAdapter(mEpisodes, IrishUpdate.this));
+			}
+		};
+
+		getAvailableEpisodes();
 	}
 
+	/**
+	 * Get a list of episodes from the District website
+	 * 
+	 * Runs on a separate thread so that we don't get a NetworkOnMainThreadException
+	 */
 	private void getAvailableEpisodes() {
-		try {
-			org.jsoup.nodes.Document doc = Jsoup.connect("http://www.district196.org/rhs/irishupdate/index.cfm").get();
-			org.jsoup.select.Elements elements = doc.select("a[href]");
-			System.out.println(elements);
-			for (org.jsoup.nodes.Element e: elements) {
-				if(e.attr("href").charAt(0)=='i')
-					ALepisodes.add(e.attr("href"));
-				Log.v("test",ALepisodes.get(ALepisodes.size()-1));
-			}
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					// TODO: grab the anchors and stories as well as the date
+					Document doc = Jsoup.connect("http://www.district196.org/rhs/irishupdate/index.cfm").get();
+					Elements elements = doc.select("a[href]");
 
-		} catch (Exception e) {
-			Toast.makeText(this, "Couldn't contact server, try again later", Toast.LENGTH_SHORT).show();
-		}
+					for (Element e : elements) {
+						if (e.attr("href").charAt(0)=='i') {
+							mEpisodes.add(e.attr("href"));
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					Toast.makeText(IrishUpdate.this, "Couldn't contact server, try again later", Toast.LENGTH_SHORT).show();
+				}
+
+				mHandler.post(mRunnable);
+			}
+		}).start();
 	}
 }

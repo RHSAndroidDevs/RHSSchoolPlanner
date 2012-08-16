@@ -39,9 +39,7 @@ public class Homework extends Activity {
 		mHomeworkListView = (ListView) findViewById(R.id.LVhomework);
 		mHomeworkAdapter = new HomeworkAdapter(this);
 		mHomeworkListView.setAdapter(mHomeworkAdapter);
-		mCalendar = new GregorianCalendar(0, 0, 0);
-
-		setDate(0);
+		mCalendar = new GregorianCalendar();
 
 		mButtonDate = (Button) findViewById(R.id.Bdate);
 		mButtonDate.setOnClickListener(new OnClickListener(){
@@ -84,6 +82,9 @@ public class Homework extends Activity {
 				startActivity(intent);
 			}
 		});
+
+		// Update the date to current time
+		setDate(0);
 	}
 	@Override
 	public void onResume(){
@@ -101,8 +102,8 @@ public class Homework extends Activity {
 		@Override
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			mCalendar.set(Calendar.YEAR, year);
-			mCalendar.set(Calendar.DAY_OF_MONTH,day);
-			mCalendar.set(Calendar.MONTH,month);
+			mCalendar.set(Calendar.DAY_OF_MONTH, day);
+			mCalendar.set(Calendar.MONTH, month);
 			setDate(0);
 		}
 	};
