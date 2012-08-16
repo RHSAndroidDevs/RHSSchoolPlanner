@@ -10,18 +10,18 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import edu.rhs.school_planner_adapters.ImageAdapter;
 
-public class main extends Activity {
+public class MainActivity extends Activity {
 	private Button mButtonEvents, mButtonIrishUpdate, mButtonHomework;
 
 	private OnClickListener OCL = new OnClickListener(){
 		@Override
 		public void onClick(View v) {
 			if (v == mButtonEvents) {
-				startActivity(new Intent(main.this, Events.class));
+				startActivity(new Intent(MainActivity.this, Events.class));
 			} else if (v == mButtonIrishUpdate) {
-				startActivity(new Intent(main.this, IrishUpdate.class));
+				startActivity(new Intent(MainActivity.this, IrishUpdate.class));
 			} else if (v == mButtonHomework) {
-				startActivity(new Intent(main.this, Homework.class));
+				startActivity(new Intent(MainActivity.this, Homework.class));
 			}
 		}
 	};

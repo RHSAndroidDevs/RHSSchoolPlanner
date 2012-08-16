@@ -15,7 +15,7 @@
         android:icon="@drawable/rhs_logo1"
         android:label="@string/app_name" >
         <activity
-            android:name=".main"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Events" >
-        </activity>
-        <activity android:name="IrishUpdate" >
-        </activity>
-        <activity android:name="WatchIU" >
-        </activity>
-        <activity android:name="Homework" >
-        </activity>
-        <activity android:name="AddAssignment" >
-        </activity>
+        <activity android:name="Events" />
+        <activity android:name="IrishUpdate" />
+        <activity android:name="WatchIU" />
+        <activity android:name="Homework" />
+        <activity android:name="AddAssignment" />
     </application>
 
 </manifest>

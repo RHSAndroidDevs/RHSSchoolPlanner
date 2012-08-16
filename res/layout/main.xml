@@ -16,19 +16,19 @@
         android:id="@+id/Bview_events"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="What&apos;s Doin?" />
+        android:text="@string/whatsdoin" />
 
     <Button
         android:id="@+id/Bhomework"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Homework" />
+        android:text="@string/homework" />
 
     <Button
         android:id="@+id/Birish_update"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Irish Update" />
+        android:text="@string/irishupdate" />
 
     <RelativeLayout
         android:id="@+id/imageAdapter"
