@@ -25,7 +25,10 @@
         </activity>
         <activity android:name="Events" />
         <activity android:name="IrishUpdate" />
-        <activity android:name="WatchIU" />
+        <activity
+            android:name="WatchIU"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" />
         <activity android:name="Homework" />
         <activity android:name="AddAssignment" />
     </application>
