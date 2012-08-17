@@ -2,6 +2,9 @@ package edu.rhs.school_planner;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,15 +33,39 @@ public class WatchIU extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.watch_iu);
-
 		webView = (WebView) findViewById(R.id.webview);
 
-		webView.getSettings().setJavaScriptEnabled(true);
-		webView.getSettings().setAllowFileAccess(true);
-		webView.getSettings().setPluginState(PluginState.ON);
-		webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY); //thanks Patrick!
+		// Get the URL from the Intent (in format iu120606/index.cfm)
+		String videoNumber = getIntent().getStringExtra("URL");
 
-		htmlCode = htmlCode.replaceAll("@VIDEO@", "http://www.district196.org/rhs/irishupdate/iu120606/IU06062012.flv");
+		// Remove the '/index.cfm' so that we just have the iuyyMMdd part
+		videoNumber = videoNumber.replace("/index.cfm", "");
+
+		String videoPart = "";
+
+		// Parse out the date so we can reformat it for the video portion of the URL
+		SimpleDateFormat format = new SimpleDateFormat("yyMMdd");
+		try {
+			Calendar c = Calendar.getInstance();
+			c.setTime(format.parse(videoNumber.replace("iu", "")));
+
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int day = c.get(Calendar.DATE);
+
+			// Set videoPart = "IUMMddyyyy.flv"
+			videoPart = String.format("IU%02d%02d%4d.flv", month + 1, day, year);
+		} catch (ParseException pe) {
+			System.out.println("ERROR: Cannot parse \"" + videoNumber.replace("iu", "") + "\"");
+		}
+
+		// Set the full video URL - /rhs/irishupdate/iuyyMMdd/IUMMddyyyy.flv
+		String videoUrl = "http://www.district196.org/rhs/irishupdate/" + videoNumber + "/" + videoPart;
+
+		webView.getSettings().setPluginState(PluginState.ON);
+		webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+
+		htmlCode = htmlCode.replaceAll("@VIDEO@", videoUrl);
 		webView.loadDataWithBaseURL("fake://fake/fake", htmlPre+htmlCode+htmlPost, "text/html", "UTF-8", null);
 	}
 

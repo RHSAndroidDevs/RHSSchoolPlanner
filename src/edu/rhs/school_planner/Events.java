@@ -71,8 +71,8 @@ public class Events extends Activity {
 
 					// gets the title node turns it into text and sets it to
 					// the title in Event e
-					NodeList titleList = itemElement.getElementsByTagName("title");
-					Element titleElement = (Element)titleList.item(0);
+					//					NodeList titleList = itemElement.getElementsByTagName("title");
+					//					Element titleElement = (Element)titleList.item(0);
 
 					// gets the description of the event and sets it to the description
 					// in Event e
